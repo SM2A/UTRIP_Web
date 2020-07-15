@@ -9,7 +9,7 @@
 
 typedef std::pair<std::string,std::string> argument_value;
 typedef std::map<std::string,std::string> arguments;
-enum method_index {GET,POST,DELETE};
+enum method_index {_GET_,_POST_,_DELETE_};
 
 class Command_Parser {
 

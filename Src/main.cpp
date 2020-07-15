@@ -1,6 +1,7 @@
-/*
 #include <iostream>
-#include "Utility/Command_Parser.hpp"
+#include "Utility/Handler.hpp"
+#include "APHTTP/server/server.hpp"
+#include "UTRIP/UTrip.hpp"
 
 #define HOTELS_PATH 1
 #define RATINGS_PATH 2
@@ -9,30 +10,18 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-	Command_Parser *parser = new Command_Parser(argv[HOTELS_PATH],argv[RATINGS_PATH]);
-
-	string command;
-	while (getline(cin, command)) {
-		try {
-			parser->get_command(command);
-		} catch (exception &e) {
-			cout << e.what() << endl;
-		}
-	}
-
-	return 0;
-}*/
-
-#include <iostream>
-#include "APHTTP/server/server.hpp"
-
-using namespace std;
-
-int main(int argc, char *argv[]) {
-
 	try {
-		Server server(8585);
-		server.get("/",new ShowPage("/home/amin/Desktop/main.html"));
+		Server server(1379);
+		//todo file path
+		UTrip* utrip = new UTrip(argv[HOTELS_PATH],argv[RATINGS_PATH]);
+		server.get("/",new Home(utrip));
+		server.get("/login",new ShowPage("/home/amin/CLionProjects/A7/Src/Pages/Login.html"));
+		server.post("/login",new Login(utrip));
+		server.get("/logout",new Logout(utrip));
+		server.post("/signup",new Signup(utrip));
+		server.get("/signup",new ShowPage("/home/amin/CLionProjects/A7/Src/Pages/Signup.html"));
+		server.get("/profile",new Profile(utrip));
+		server.setNotFoundErrPage("/home/amin/CLionProjects/A7/Src/Pages/Not_Found.html");
 		server.run();
 	}catch (Server::Exception &e){
 		cerr<<e.getMessage()<<endl;

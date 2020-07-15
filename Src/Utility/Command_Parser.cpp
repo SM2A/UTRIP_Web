@@ -55,7 +55,7 @@ void Command_Parser::get_command(string command) {
 	arguments arguments_;
 	string arg , val;
 	while (stream>>arg>>val) {
-		if((method_ == method[POST])&&(command_=="filters")&&(arg==CITY)){
+		if((method_ == method[_POST_])&&(command_=="filters")&&(arg==CITY)){
 			string city_name;
 			getline(stream,city_name);
 			val+=city_name;
@@ -64,9 +64,9 @@ void Command_Parser::get_command(string command) {
 	}
 
 	try {
-		if (method_ == method[GET]) get_parser(command_, arguments_);
-		else if (method_ == method[POST]) post_parser(command_, arguments_);
-		else if (method_ == method[DELETE]) delete_parser(command_, arguments_);
+		if (method_ == method[_GET_]) get_parser(command_, arguments_);
+		else if (method_ == method[_POST_]) post_parser(command_, arguments_);
+		else if (method_ == method[_DELETE_]) delete_parser(command_, arguments_);
 	}catch (exception& e){
 		cout<<e.what()<<endl;
 	}

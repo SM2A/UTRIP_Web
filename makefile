@@ -1,7 +1,8 @@
 COMPILER = g++
-COMPLIE = -c
+COMPILE = -c
 VERSION = -std=c++11
-CC = ${COMPILER} ${COMPLIE} ${VERSION}
+CF = -pedantic
+CC = ${COMPILER} ${COMPILE} ${VERSION} ${CF}
 
 SOURCES := ${shell find * -type f -name "*.cpp"}
 OBJDIR  := Build
@@ -10,7 +11,7 @@ OBJECTS := ${addprefix ${OBJDIR}/,${SOURCES:.cpp=.o}}
 all: utrip.out
 
 utrip.out: ${OBJECTS}
-	${COMPILER} ${VERSION} $^ -o $@
+	${COMPILER} ${VERSION} ${CF} $^ -o $@
 
 ${OBJECTS}: ${OBJDIR}/%.o: %.cpp
 	mkdir -p ${@D}

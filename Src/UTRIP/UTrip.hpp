@@ -41,6 +41,7 @@ public:
 			float facilities,float value_for_money);
 	void show_manual_weights();
 	void show_estimated_weights();
+	bool is_user_logged_in();
 
 private:
 
@@ -53,7 +54,6 @@ private:
 	enum SORT_ORDER sort_order;
 	enum SORT_PROPERTY sort_property;
 
-	bool is_user_logged_in();
 	void reset_sort();
 	void reset_filter();
 	void personal_rating();
