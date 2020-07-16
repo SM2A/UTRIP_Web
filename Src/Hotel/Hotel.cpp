@@ -1,5 +1,6 @@
 #include "Hotel.hpp"
 #include <iostream>
+#include <sstream>
 #include <iomanip>
 #include "../Utility/Error.hpp"
 
@@ -45,10 +46,18 @@ float Hotel::calculate_average_price(room_data data) {
 	return avg_price;
 }
 
-void Hotel::print_summary() {
+string Hotel::print_summary() {
 
-	string summary = id +" "+ name +" "+ to_string(star) +" "+ city +" "+ to_string(total_rooms_count)+" ";
-	cout<<summary<<fixed<<setprecision(EXPONENT)<<average_price<<endl;
+	ostringstream summary;
+	summary << "<tr>" << endl
+	        << "<td>"<< "<a href=\""<< "/hotel?id="<<this->id<<"\"/>"<<"<img src=\""<<this->image_url<<"\"/>"<<"</td>" << endl
+	        << "<td>"<<this->name<<"</td>" << endl
+	        << "<td>"<<this->star<<"</td>" << endl
+	        << "<td>"<<this->city<<"</td>" << endl
+	        << "<td>"<<this->avg_rating->get_overall()<<"</td>" << endl
+	        << "<td>"<<this->total_rooms_count<<"</td>" << endl
+	        << "</tr>";
+	return summary.str();
 }
 
 void Hotel::print_detail() {

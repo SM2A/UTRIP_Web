@@ -83,11 +83,11 @@ void UTrip::wallet_history(int count) {
 	logged_in_user->print_wallet_history(count);
 }
 
-void UTrip::show_hotel() {
+string UTrip::show_hotel() {
 
 	if(!is_user_logged_in()) throw Permission_Denied();
 	try {
-		hotels->print(filters,logged_in_user,sort_order,sort_property,manual_weights,estimated);
+		return hotels->print(filters,logged_in_user,sort_order,sort_property,manual_weights,estimated);
 	}catch (exception& e){
 		cout<<e.what()<<endl;
 		throw ;

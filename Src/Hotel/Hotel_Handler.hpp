@@ -22,7 +22,7 @@ public:
 	Hotel_Handler(){}
 	Hotel_Handler(std::string hotels_path,std::string ratings_path);
 	Hotel_Handler(const Hotel_Handler* hotel_handler);
-	void print(Filter* filters[FILTERS_SIZE],User* user,enum SORT_ORDER sort_order,
+	std::string print(Filter* filters[FILTERS_SIZE],User* user,enum SORT_ORDER sort_order,
 			enum SORT_PROPERTY sort_property,Manual_Weights* manual_weights,Manual_Weights* estimated);
 	void print(std::string id);
 	Hotel* find(std::string id);

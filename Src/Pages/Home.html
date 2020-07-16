@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div class="card" style="overflow: auto">
+    <div class="container">
+        <table>
+            <tr>
+                <th width="25%">Image</th>
+                <th width="25%">Name</th>
+                <th width="10%">Star</th>
+                <th width="20%">City</th>
+                <th width="10%">Average Rating</th>
+                <th width="10%">Total Rooms</th>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
+<style>
+
+    body {background-color: #e3fff5;}
+
+    .card{
+        background-color: white;
+        box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid #ff5533;
+        border-radius: 25px;
+    }
+    
+    table{
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    th,td{
+        border-bottom: 1px solid #c1c1c1;
+    }
+    
+    tr:hover {background-color: #e3fff5;}
+
+    td{
+        height: 90px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+</style>

@@ -2,6 +2,7 @@
 #include "../../Utility/Error.hpp"
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 
 #define EXPONENT 2
 #define UPPER_BOUND 5
@@ -58,4 +59,12 @@ double Rating::calc_overall(double location_,double cleanness_,double staff_,
 	sum+=(this->facilities*facilities_);
 	sum+=(this->value_for_money*value_for_money_);
 	return sum;
+}
+
+std::string Rating::get_overall(){
+
+	std::ostringstream out;
+	out<<std::fixed<<std::setprecision(EXPONENT);
+	out<<this->overall;
+	return out.str();
 }

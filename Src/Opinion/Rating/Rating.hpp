@@ -15,6 +15,7 @@ public:
 	       double facilities_,double value_for_money_);
 	friend class Rating_Handler;
 	void print();
+	std::string get_overall();
 
 private:
 

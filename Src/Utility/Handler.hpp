@@ -61,15 +61,6 @@ private:
 	UTrip* utrip;
 };
 
-class Template_Handler : public RequestHandler {
-public:
-	Template_Handler(UTrip* utrip_ , std::string path_):utrip(utrip_),path(path_){parser = new TemplateParser(path_);}
-	Response *callback(Request *req);
-	virtual std::map<std::string, std::string> handle(Request *req);
-private:
-	UTrip* utrip;
-	std::string path;
-	TemplateParser *parser;
-};
+std::string redirect(std::string msg,std::string rtn_path,std::string rtn_page);
 
 #endif

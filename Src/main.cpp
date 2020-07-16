@@ -20,7 +20,8 @@ int main(int argc, char *argv[]) {
 		server.get("/logout",new Logout(utrip));
 		server.post("/signup",new Signup(utrip));
 		server.get("/signup",new ShowPage("/home/amin/CLionProjects/A7/Src/Pages/Signup.html"));
-		server.get("/profile",new Profile(utrip));
+		server.get("/hotel",new Description(utrip));
+		//server.get("/profile",new Profile(utrip));
 		server.setNotFoundErrPage("/home/amin/CLionProjects/A7/Src/Pages/Not_Found.html");
 		server.run();
 	}catch (Server::Exception &e){

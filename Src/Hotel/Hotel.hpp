@@ -21,7 +21,7 @@ public:
 	Hotel(std::string id_,std::string name_,int star_,std::string overview_,std::string facilities_,std::string city_,
 			geographical_coordinates location_,std::string image_url_,room_data data);
 
-	void print_summary();
+	std::string print_summary();
 	void print_detail();
 
 	int reserve_cost(std::string room_type , int quantity , range date_);

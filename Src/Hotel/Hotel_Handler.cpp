@@ -71,7 +71,7 @@ vector<Hotel*> Hotel_Handler::read_hotel_file(string path) {
 	return hotels_;
 }
 
-void Hotel_Handler::print(Filter* filters[FILTERS_SIZE],User* user,enum SORT_ORDER sort_order,
+string Hotel_Handler::print(Filter* filters[FILTERS_SIZE],User* user,enum SORT_ORDER sort_order,
 		enum SORT_PROPERTY sort_property,Manual_Weights* manual_weights,Manual_Weights* estimated) {
 
 	Hotel_Handler* filtered_hotels = this;
@@ -83,7 +83,9 @@ void Hotel_Handler::print(Filter* filters[FILTERS_SIZE],User* user,enum SORT_ORD
 
 	if(filtered_hotels->hotels.size() == EMPTY) throw Empty();
 	sort_(filtered_hotels,sort_order,sort_property,manual_weights,estimated,user);
-	for(Hotel* hotel : filtered_hotels->hotels) hotel->print_summary();
+	string result = "";
+	for(Hotel* hotel : filtered_hotels->hotels) result += hotel->print_summary();
+	return result;
 }
 
 void Hotel_Handler::print(std::string id) {
