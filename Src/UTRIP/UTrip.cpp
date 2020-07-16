@@ -94,11 +94,11 @@ string UTrip::show_hotel() {
 	}
 }
 
-void UTrip::show_hotel(string id) {
+string UTrip::show_hotel(string id) {
 
 	if(!is_user_logged_in()) throw Permission_Denied();
 	try {
-		hotels->print(id);
+		return hotels->print(id);
 	}catch (exception& e){
 		cout<<e.what()<<endl;
 		throw ;

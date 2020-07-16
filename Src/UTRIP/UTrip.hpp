@@ -21,7 +21,7 @@ public:
 	void add_credit(float value);
 	void wallet_history(int count);
 	std::string show_hotel();
-	void show_hotel(std::string id);
+	std::string show_hotel(std::string id);
 	void reserve(std::string hotel_id,std::string room_type,int quantity,int check_in,int check_out);
 	void show_reserves();
 	void add_comment(std::string hotel_id,std::string comment);

@@ -60,17 +60,62 @@ string Hotel::print_summary() {
 	return summary.str();
 }
 
-void Hotel::print_detail() {
+string Hotel::print_detail() {
 
-	cout<<id<<endl<<name<<endl;
-	cout<<"star: "<<star<<endl;
-	cout<<"overview: "<<overview<<endl;
-	cout<<"amenities: "<<facilities<<endl;
-	cout<<"city: "<<city<<endl;
-	cout<<"latitude: "<<fixed<<setprecision(EXPONENT)<<location.latitude<<endl;
-	cout<<"longitude: "<<fixed<<setprecision(EXPONENT)<<location.longitude<<endl;
-	cout<<"#rooms: "<<this->rooms->rooms_count()<<endl;
-	cout<<"price: "<<this->rooms->rooms_price()<<endl;
+	ostringstream out;
+	string stars;
+	for (int i = 0; i <star ; ++i) stars+="⭐";
+
+	out << "<tr>" << endl
+	    << "<td>" << name << "</td>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<td>" << overview << "</td>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<td>" << facilities << "</td>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<td>" << stars << "</td>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<td>" << "City : " << city << "</td>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<td>" << endl
+	    << "<p>Rooms</p>" << endl
+	    << "<table>" << endl
+	    << "<tr>" << endl
+	    << "<th>&nbsp;</th>" << endl
+	    << "<th>Standard</th>" << endl
+	    << "<th>Deluxe</th>" << endl
+	    << "<th>Premium</th>" << endl
+	    << "<th>Luxury</th>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<th>Price</th>" << endl
+	    << "<th>" << rooms_data.standard.first << "</th>" << endl
+	    << "<th>" << rooms_data.deluxe.first << "</th>" << endl
+	    << "<th>" << rooms_data.premium.first << "</th>" << endl
+	    << "<th>" << rooms_data.luxury.first << "</th>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<th>Count</th>" << endl
+	    << "<th>" << rooms_data.standard.second << "</th>" << endl
+	    << "<th>" << rooms_data.deluxe.second << "</th>" << endl
+	    << "<th>" << rooms_data.premium.second << "</th>" << endl
+	    << "<th>" << rooms_data.luxury.second << "</th>" << endl
+	    << "</tr>" << endl
+	    << "</table>" << endl
+	    << "</td>" << endl
+	    << "</tr>" << endl
+	    << "</table>" << endl
+	    << "<a href='/'><button>Back</button></a>" <<endl
+	    << "</div>" << endl
+	    << "</div>" << endl
+	    << "<img src=\"" << image_url << "\"/>" << endl;
+
+	return out.str();
 }
 
 int Hotel::reserve_cost(string room_type, int quantity , range date_) {

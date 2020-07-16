@@ -22,7 +22,7 @@ public:
 			geographical_coordinates location_,std::string image_url_,room_data data);
 
 	std::string print_summary();
-	void print_detail();
+	std::string print_detail();
 
 	int reserve_cost(std::string room_type , int quantity , range date_);
 	std::vector<Room*> reserve(std::string room_type , int quantity , range date_);

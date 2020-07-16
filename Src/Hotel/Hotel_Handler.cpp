@@ -88,9 +88,9 @@ string Hotel_Handler::print(Filter* filters[FILTERS_SIZE],User* user,enum SORT_O
 	return result;
 }
 
-void Hotel_Handler::print(std::string id) {
+string Hotel_Handler::print(std::string id) {
 
-	find(id)->print_detail();
+	return find(id)->print_detail();
 }
 
 Hotel *Hotel_Handler::find(std::string id) {
