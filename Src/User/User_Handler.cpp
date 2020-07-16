@@ -20,8 +20,8 @@ User *User_Handler::creat_user(string user_name, string password, string e_mail)
 	}catch (exception& e){
 		cout<<e.what()<<endl;
 		delete(new_user);
+		throw ;
 	}
-	return nullptr;
 }
 
 User *User_Handler::find(string user_name) {

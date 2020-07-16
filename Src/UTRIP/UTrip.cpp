@@ -37,6 +37,7 @@ void UTrip::creat_user(string user_name, string password, string e_mail) {
 		cout<<e.what()<<endl;
 		delete(logged_in_user);
 		logged_in_user = nullptr;
+		throw ;
 	}
 }
 
@@ -61,6 +62,7 @@ void UTrip::login(string user_name, string password) {
 	}catch (exception& e){
 		cout<<e.what()<<endl;
 		logged_in_user = nullptr;
+		throw ;
 	}
 }
 
@@ -88,6 +90,7 @@ void UTrip::show_hotel() {
 		hotels->print(filters,logged_in_user,sort_order,sort_property,manual_weights,estimated);
 	}catch (exception& e){
 		cout<<e.what()<<endl;
+		throw ;
 	}
 }
 
@@ -98,6 +101,7 @@ void UTrip::show_hotel(string id) {
 		hotels->print(id);
 	}catch (exception& e){
 		cout<<e.what()<<endl;
+		throw ;
 	}
 }
 
@@ -115,6 +119,7 @@ void UTrip::reserve(string hotel_id, string room_type, int quantity, int check_i
 				reserve_date,hotel->reserve_cost(room_type,quantity,reserve_date));
 	}catch (exception& e){
 		cout<<e.what()<<endl;
+		throw ;
 	}
 }
 

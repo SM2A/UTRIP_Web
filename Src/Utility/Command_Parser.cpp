@@ -69,6 +69,7 @@ void Command_Parser::get_command(string command) {
 		else if (method_ == method[_DELETE_]) delete_parser(command_, arguments_);
 	}catch (exception& e){
 		cout<<e.what()<<endl;
+		throw ;
 	}
 }
 

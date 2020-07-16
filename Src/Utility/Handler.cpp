@@ -7,7 +7,6 @@ using namespace std;
 
 Response *Home::callback(Request *request) {
 
-
 }
 
 Response *Login::callback(Request *request) {
@@ -191,4 +190,18 @@ Response *Description::callback(Request *request) {
 
 	if(!utrip->is_user_logged_in())  return Response::redirect("/login");
 	return nullptr;
+}
+
+Response *Template_Handler::callback(Request *req) {
+	map<string, string> context;
+	context = this->handle(req);
+	Response *res = new Response;
+	res->setHeader("Content-Type", "text/html");
+	res->setBody(parser->getHtml(context));
+	return res;
+}
+
+std::map<std::string, std::string> Template_Handler::handle(Request *req) {
+	map<string, string> context;
+	return context;
 }
