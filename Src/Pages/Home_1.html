@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<form action="/filter" method="get">
+    <h>Star</h>
+    <h>Min :</h>
+    <select name="min">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <h>Max :</h>
+    <select name="max">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+<a href="/r_filter">
+    <button type="button">Remove Filter</button>
+</a>
+<a href="/logout">
+    <button id="b1" type="button">Logout</button>
+</a>
+<a href="/profile">
+    <button id="b2" type="button">Profile</button>
+</a>
+<div class="card" style="overflow: auto">
+    <div class="container">
+        <table width="95%">
+            <tr height="40px">
+                <th width="13%">Image</th>
+                <th width="27%">Name</th>
+                <th width="10%">Star</th>
+                <th width="20%">City</th>
+                <th width="10%">Average Rating</th>
+                <th width="10%">Total Rooms</th>
+            </tr>

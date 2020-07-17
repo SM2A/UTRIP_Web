@@ -86,11 +86,11 @@ string Hotel::print_detail() {
 	    << "<p>Rooms</p>" << endl
 	    << "<table>" << endl
 	    << "<tr>" << endl
-	    << "<th>&nbsp;</th>" << endl
-	    << "<th>Standard</th>" << endl
-	    << "<th>Deluxe</th>" << endl
-	    << "<th>Premium</th>" << endl
-	    << "<th>Luxury</th>" << endl
+	    << "<th width=\"10%\">&nbsp;</th>" << endl
+	    << "<th width=\"10%\">Standard</th>" << endl
+	    << "<th width=\"10%\">Deluxe</th>" << endl
+	    << "<th width=\"10%\">Premium</th>" << endl
+	    << "<th width=\"10%\">Luxury</th>" << endl
 	    << "</tr>" << endl
 	    << "<tr>" << endl
 	    << "<th>Price</th>" << endl
