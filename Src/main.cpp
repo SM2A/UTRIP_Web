@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 		server.get("/hotel",new Description(utrip));
 		server.get("/filter",new Star_Filter(utrip));
 		server.get("/r_filter",new R_Filter(utrip));
-		//server.get("/profile",new Profile(utrip));
+		server.get("/profile",new Profile(utrip));
 		server.setNotFoundErrPage("/home/amin/CLionProjects/A7/Src/Pages/Not_Found.html");
 		server.run();
 	}catch (Server::Exception &e){

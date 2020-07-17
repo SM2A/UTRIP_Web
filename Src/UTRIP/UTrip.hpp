@@ -42,6 +42,7 @@ public:
 	void show_manual_weights();
 	void show_estimated_weights();
 	bool is_user_logged_in();
+	User* get_user(){ return logged_in_user;}
 
 private:
 

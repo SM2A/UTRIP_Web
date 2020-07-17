@@ -70,16 +70,16 @@ string Hotel::print_detail() {
 	    << "<td>" << name << "</td>" << endl
 	    << "</tr>" << endl
 	    << "<tr>" << endl
-	    << "<td>" << overview << "</td>" << endl
-	    << "</tr>" << endl
-	    << "<tr>" << endl
-	    << "<td>" << facilities << "</td>" << endl
-	    << "</tr>" << endl
-	    << "<tr>" << endl
 	    << "<td>" << stars << "</td>" << endl
 	    << "</tr>" << endl
 	    << "<tr>" << endl
 	    << "<td>" << "City : " << city << "</td>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<td>" << overview << "</td>" << endl
+	    << "</tr>" << endl
+	    << "<tr>" << endl
+	    << "<td>" << facilities << "</td>" << endl
 	    << "</tr>" << endl
 	    << "<tr>" << endl
 	    << "<td>" << endl
@@ -110,7 +110,7 @@ string Hotel::print_detail() {
 	    << "</td>" << endl
 	    << "</tr>" << endl
 	    << "</table>" << endl
-	    << "<a href='/'><button>Back</button></a>" <<endl
+	    << "<a href='/'><button>Back</button></a>" << endl
 	    << "</div>" << endl
 	    << "</div>" << endl
 	    << "<img src=\"" << image_url << "\"/>" << endl;

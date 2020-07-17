@@ -101,8 +101,28 @@ Response *Signup::callback(Request *request) {
 
 Response *Profile::callback(Request *request) {
 
-	if (!utrip->is_user_logged_in()) return Response::redirect("/login");
-	return nullptr;
+	Response *response = new Response();
+	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	string str;
+	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
+	else {
+		try {
+			char out[3000];
+			//todo file path
+			ifstream file("/home/amin/CLionProjects/A7/Src/Pages/Profile.html");
+			stringstream stream;
+			stream << file.rdbuf();
+			sprintf(out, stream.str().c_str(),utrip->get_user()->get_user_name().c_str(),
+					to_string(utrip->get_user()->get_credit()).c_str());
+			str = string(out);
+		}catch (exception &e) {
+			str = redirect(e.what(), "/", "Home page");
+			response->setBody(str);
+			return response;
+		}
+	}
+	response->setBody(str);
+	return response;
 }
 
 Response *Star_Filter::callback(Request *request) {
@@ -137,6 +157,7 @@ Response *Description::callback(Request *request) {
 	string str;
 	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
 	else {
+		try {
 		ifstream file_1("/home/amin/CLionProjects/A7/Src/Pages/Description_1.html");
 		ifstream file_2("/home/amin/CLionProjects/A7/Src/Pages/Description_2.html");
 		stringstream stream_1, stream_2;
@@ -145,6 +166,11 @@ Response *Description::callback(Request *request) {
 		str += stream_1.str();
 		str += utrip->show_hotel(request->getQueryParam("id"));
 		str += stream_2.str();
+		}catch (exception &e) {
+			str = redirect(e.what(), "/", "Home page");
+			response->setBody(str);
+			return response;
+		}
 	}
 	response->setBody(str);
 	return response;

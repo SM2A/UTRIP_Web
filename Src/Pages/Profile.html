@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<div class="card" style="overflow: auto">
+    <div class="container">
+        <table width="95%">
+            <tr height="40px">
+                <th id="th1" width="50%">Profile</th>
+                <th width="50%">Charge Wallet</th>
+            </tr>
+            <tr height="300px">
+                <td id="td1">
+                    <h1>%s</h1><br/>
+                    <h2>Current Credit :</h2>
+                    <h3>%s</h3>
+                </td>
+                <td>
+                    <form action="/charge" method="post">
+                        <input name="amount" type="number" placeholder="Amount :"><br/>
+                        <button id="bc" type="submit">Charge</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <a href="/"><button id="back">Back</button></a>
+    </div>
+</div>
+</body>
+</html>
+<style>
+
+    body {
+        background-color: #e3fff5;
+    }
+
+    .card {
+        background-color: white;
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: 51%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid #ff5533;
+        border-radius: 25px;
+    }
+
+    table {
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    th, td {
+        border-bottom: 1px solid #c1c1c1;
+    }
+
+    #th1,#td1{
+        border-right: 1px solid #c1c1c1;
+    }
+
+    #back {
+        margin-left: 47%;
+        text-align: center;
+        background-color: deepskyblue;
+        border-radius: 15px;
+        border: 2px solid deepskyblue;
+        font-size: 20px;
+        width: 90px;
+        height: 50px;
+        color: black;
+        margin-top: 8px;
+    }
+
+    #back:hover #bc:hover{
+        background-color: #ff5533;
+    }
+
+    #bc{
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        background-color: deepskyblue;
+        border-radius: 15px;
+        border: 2px solid deepskyblue;
+        font-size: 20px;
+        width: 90px;
+        height: 50px;
+        color: black;
+        margin-top: 8px;
+    }
+
+    form{
+        text-align: center;
+        font-size: medium;
+    }
+
+    input[type=number] {
+        background-color: white;
+        border-radius: 4px;
+        border: 2px solid deepskyblue;
+        height: 25px;
+    }
+
+</style>

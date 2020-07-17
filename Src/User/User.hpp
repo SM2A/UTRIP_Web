@@ -30,6 +30,7 @@ public:
 	bool do_have_enough_rating();
 	Manual_Weights* calc_estimated_weight();
 	std::string get_user_name(){ return name;}
+	float get_credit(){ return credit;}
 	Reserve_Handler* get_reserves(){ return reservations;}
 
 private:
