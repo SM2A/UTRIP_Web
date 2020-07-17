@@ -78,6 +78,14 @@ private:
 	UTrip* utrip;
 };
 
+class Charge :  public RequestHandler{
+public:
+	Charge(UTrip* utrip_) : utrip(utrip_){}
+	Response* callback(Request* request);
+private:
+	UTrip* utrip;
+};
+
 std::string redirect(std::string msg,std::string rtn_path,std::string rtn_page);
 
 #endif

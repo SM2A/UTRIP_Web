@@ -4,6 +4,8 @@
 
 #define CONTENT_TYPE "Content-Type"
 #define CONTENT_VALUE "text/html"
+#define CONNECTION "Connection"
+#define CONNECTION_STATUS "close"
 
 using namespace std;
 
@@ -11,6 +13,7 @@ Response *Home::callback(Request *request){
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
 	else {
@@ -37,6 +40,7 @@ Response *Login::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (utrip->is_user_logged_in()) str = redirect("Please logout first", "/", "Home page");
 	else {
@@ -57,6 +61,7 @@ Response *Logout::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
 	else {
@@ -64,7 +69,7 @@ Response *Logout::callback(Request *request) {
 			utrip->logout();
 			str = redirect("God Bye", "/login", "Login page");
 		} catch (exception &e) {
-			str = redirect(e.what(), "/signup", "Signup page");
+			str = redirect(e.what(), "/", "Home page");
 			response->setBody(str);
 			return response;
 		}
@@ -77,6 +82,7 @@ Response *Signup::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (utrip->is_user_logged_in()) str = redirect("Please logout first", "/", "Home page");
 	else {
@@ -103,6 +109,7 @@ Response *Profile::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
 	else {
@@ -116,7 +123,7 @@ Response *Profile::callback(Request *request) {
 					to_string(utrip->get_user()->get_credit()).c_str());
 			str = string(out);
 		}catch (exception &e) {
-			str = redirect(e.what(), "/", "Home page");
+			str = redirect(e.what(), "/profile", "Profile page");
 			response->setBody(str);
 			return response;
 		}
@@ -129,6 +136,7 @@ Response *Star_Filter::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
 	else {
@@ -154,6 +162,7 @@ Response *Description::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
 	else {
@@ -191,6 +200,7 @@ Response *Static::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (utrip->is_user_logged_in()) str = redirect("Please logout first", "/", "Home page");
 	else {
@@ -207,6 +217,7 @@ Response *R_Filter::callback(Request *request) {
 
 	Response *response = new Response();
 	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
 	string str;
 	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
 	else {
@@ -220,6 +231,32 @@ Response *R_Filter::callback(Request *request) {
 			      "</html>";
 		}catch (exception &e) {
 			str = redirect(e.what(), "/", "Home page");
+			response->setBody(str);
+			return response;
+		}
+	}
+	response->setBody(str);
+	return response;
+}
+
+Response *Charge::callback(Request *request) {
+
+	Response *response = new Response();
+	response->setHeader(CONTENT_TYPE, CONTENT_VALUE);
+	response->setHeader(CONNECTION,CONNECTION_STATUS);
+	string str;
+	if (!utrip->is_user_logged_in()) str = redirect("Please login first", "/login", "Login page");
+	else {
+		try {
+			utrip->add_credit(stof(request->getBodyParam("amount")));
+			str = "<!DOCTYPE html>\n"
+			      "<html>\n"
+			      "   <head>\n"
+			      "      <meta http-equiv = \"refresh\" content = \"0; url=/profile\"/>\n"
+			      "   </head>\n"
+			      "</html>";
+		}catch (exception &e) {
+			str = redirect(e.what(), "/profile", "Profile page");
 			response->setBody(str);
 			return response;
 		}

@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
 		server.get("/filter",new Star_Filter(utrip));
 		server.get("/r_filter",new R_Filter(utrip));
 		server.get("/profile",new Profile(utrip));
+		server.post("/charge",new Charge(utrip));
 		server.setNotFoundErrPage("/home/amin/CLionProjects/A7/Src/Pages/Not_Found.html");
 		server.run();
 	}catch (Server::Exception &e){
